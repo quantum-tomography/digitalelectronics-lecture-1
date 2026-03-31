@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Digital Electronics Basics</title>
+<style>
+:root { --bg:#0b1220; --card:#111a2e; --text:#e7eefc; --muted:#a8b3cf; --accent:#4da3ff; --good:#3ddc97; --bad:#ff5c7a; }
+*{ box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body{ margin:0; background:linear-gradient(160deg,#081022,#0b1220); color:var(--text); }
+header{ position:sticky; top:0; backdrop-filter: blur(10px); background:rgba(11,18,32,.7); border-bottom:1px solid rgba(255,255,255,.08); z-index:10; }
+.wrap{ max-width:1000px; margin:0 auto; padding:18px; }
+.row{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.title{ font-weight:700; letter-spacing:.2px; }
+.sub{ color:var(--muted); font-size:14px; }
+.bar{ height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+.bar > div{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),#7cc6ff); transition:width .25s ease; }
+main{ padding:20px 0 60px; }
+.card{ background:rgba(17,26,46,.85); border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+.cardPad{ padding:18px; }
+.grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+@media(min-width:900px){ .grid{ grid-template-columns: 2fr 1fr; } }
+.h1{ font-size:26px; margin:0 0 10px; display:inline-block; position:relative; }
+.h1::after{ content:""; display:block; width:58%; height:3px; margin-top:8px; border-radius:999px; background:linear-gradient(90deg, rgba(77,163,255,.95), rgba(124,198,255,.15)); }
+.h2{ font-size:18px; margin:18px 0 10px; color:#d8e6ff; }
+ul{ margin:10px 0 0 18px; color:var(--text); }
+li{ margin:6px 0; }
+.pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(77,163,255,.12); border:1px solid rgba(77,163,255,.35); color:#cfe7ff; font-size:12px; }
+.btns{ display:flex; gap:10px; flex-wrap:wrap; }
+button{ border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; }
+button:hover{ background:rgba(255,255,255,.10); }
+button.primary{ background:rgba(77,163,255,.20); border-color:rgba(77,163,255,.55); }
+.footerNav{ position:fixed; bottom:0; left:0; right:0; background:rgba(11,18,32,.75); border-top:1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); }
+.footerNav .wrap{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.book{ max-width:70ch; margin:0; }
+.book p{ color:var(--text); line-height:1.85; margin:10px 0; font-size:16px; }
+.book p.lead{ color:#d8e6ff; font-size:16px; }
+.book .dropcap:first-letter{ float:left; font-size:42px; line-height:38px; padding:6px 8px 0 0; color:#d8e6ff; font-weight:800; }
+.quizBox{ margin-top:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03); border-radius:16px; padding:14px; }
+.qTitle{ font-weight:800; color:#d8e6ff; margin:0 0 8px; }
+.qPrompt{ margin:0 0 12px; line-height:1.75; color:var(--text); }
+.qOptions{ display:grid; gap:10px; }
+.qOpt{ text-align:left; border-radius:14px; padding:12px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); }
+.qOpt:hover{ background:rgba(255,255,255,.08); }
+.qOpt.correct{ border-color:rgba(61,220,151,.55); background:rgba(61,220,151,.12); }
+.qOpt.wrong{ border-color:rgba(255,92,122,.55); background:rgba(255,92,122,.12); }
+.qFeedback{ margin-top:12px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); color:var(--text); line-height:1.6; }
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="row"><div><div class="title" id="courseTitle"></div><div class="sub" id="courseSub"></div></div><div class="pill"><span id="slideCounter"></span></div></div><div style="margin-top:12px" class="bar"><div id="progressFill"></div></div></div></header>
+<main><div class="wrap"><div class="grid"><section class="card cardPad" id="slide"></section><aside class="card cardPad"><div class="h2">Learning outcomes</div><ul id="goals"></ul></aside></div></div></main>
+<div class="footerNav"><div class="wrap"><div class="btns"><button id="btnPrev">← Prev</button><button id="btnNext" class="primary">Next →</button></div><div class="sub" id="statusLine"></div></div></div>
+<script>
+const lessonData = {
+  "courseTitle": "Digital Electronics Basics",
+  "courseSub": "Digital logic",
+  "learningOutcomes": [
+    "Describe the main idea of the topic.",
+    "Identify the most important concepts.",
+    "Apply the lecture ideas in a simple example."
+  ],
+  "slides": [
+    {
+      "id": "s_vvh8abn6",
+      "type": "content",
+      "title": "Basic Logic Circuits",
+      "text": "The main characteristic of almost all analog (linear) electronic circuits is that they have one input, to which a relatively weak signal is applied, and one output, where an amplified signal appears across the load. Therefore, the primary requirement here is amplification of the signal in terms of power while preserving its waveform.\n\n\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/1.png\" target=\"_blank\">\n    <img src=\"images/1.png\" alt=\"Logic voltage range\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">Logic levels (click to enlarge)<\/div>\n<\/div>\n\n\n\nIn logical (digital) integrated circuits, the inputs are usually several, while the output is one. Here, digital signals are used, which can have only two levels — low and high (Fig. 7.14a). The low level is called logical zero (0), and the high level — logical one (1) (Fig. 7.14b). These signals have the same amplitude at both the inputs and the output, i.e., there is no voltage amplification here. However, since transistors are power amplifiers, the output of a given logic circuit can drive the inputs of dozens of other circuits, and this is a fundamental feature of digital electronics. \n\n<br>① The main requirement for logic circuits is that for a given combination of input signals, the output must produce a signal with a precisely defined level (low or high). Therefore, after passing through the logic circuit, the input signals must be transformed so that the output signal corresponds to a specific logical law. (This is where the name “logic circuits” comes from.)\n\n<br>② As early as 1854, the English mathematician George Boole developed the foundations of logical algebra (Boolean algebra), which was initially used to study human reasoning. Later, this algebra became the foundation of electronic computing technology. ③ The reason for this is that in Boolean algebra, both arguments and functions can have only two values, which can be easily realized in practice through the two states of a transistor (cutoff–saturation, or low level–high level). ④ This is also the reason for the use of the binary number system, which allows easy encoding of information and its processing at high speed.\n\n⑤ By their structure, different digital devices (e.g., flip-flops, counters, adders, registers, encoders, decoders, …)",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_5wufhulm",
+      "type": "content",
+      "title": "NOT LOGIC GATE (NOT)",
+      "text": "The <b>NOT logic gate<\/b> has one input and one output. It can be implemented most simply by using an inverter built with a bipolar transistor. It can also be realized with a MOS transistor.\n\nThe main property of the NOT gate is that the output level is always the opposite of the input level. For this reason, the gate performs the logical operation called <b>negation<\/b> or <b>inversion<\/b>.\n\nUsually, the input signal is denoted by <b>X<\/b>, and the output signal by <b>Y<\/b>. Logical negation is written by placing a bar over the argument:\n\n<div style=\"text-align:center; font-size:1.2em; margin:16px 0;\"><b>Y = X̅<\/b><\/div>\n\nThis is read as: <i>“Y is NOT X.”<\/i>\n\nIn practice, this means:\n<ul>\n  <li>if the input is <b>1<\/b>, the output is <b>0<\/b>;<\/li>\n  <li>if the input is <b>0<\/b>, the output is <b>1<\/b>.<\/li>\n<\/ul>\n\nThe relationship between the input and output can be shown with a <b>truth table<\/b>. For the NOT gate, there are only two possible cases:\n<ul>\n  <li><b>X = 0 → Y = 1<\/b><\/li>\n  <li><b>X = 1 → Y = 0<\/b><\/li>\n<\/ul>\n\nThe bar over a value means that the logical level is inverted. For example:\n<ul>\n  <li><b><span style=\"position:relative; display:inline-block;\">1<span style=\"position:absolute; left:0; right:0; top:-0.2em; text-align:center;\">‾<\/span><\/span> = 0<\/b><\/li>\n  <li><b><span style=\"position:relative; display:inline-block;\">0<span style=\"position:absolute; left:0; right:0; top:-0.2em; text-align:center;\">‾<\/span><\/span> = 1<\/b><\/li>\n<\/ul>\n\n\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/2.png\" target=\"_blank\">\n    <img src=\"images/2.png\" alt=\"NOT gate symbol\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">NOT gate symbol (click to enlarge)<\/div>\n<\/div>\n\n\nIn block diagrams, the NOT gate is usually shown as a symbol with a small circle at the output. This small circle indicates inversion. The input and output voltages are measured with respect to the reference conductor, or ground.",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_isu1kuf6",
+      "type": "content",
+      "title": "Slide 3",
+      "text": "<p>The ground conductor (as well as the power supply) is often not shown, but is implied. This is an important feature when drawing logic circuits and must be remembered.<\/p>\n\n<p>As an example, Fig. 7.16a, b shows how the <b>NOT logic gate<\/b> inverts (reverses) the electrical levels.<\/p>\n\n\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/2_1.png\" target=\"_blank\">\n    <img src=\"images/2_1.png\" alt=\"Using a NOT gate\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">Using a NOT gate (click to enlarge)<\/div>\n<\/div>\n\n\n\n<p>In Fig. 7.16c, the connection of two NOT gates is shown, where from a single input signal <b>X<\/b>, two output signals are obtained: <b>Y₁<\/b> and <b>Y₂<\/b>.<\/p>\n\n<p>We recall that the electrical power obtained at the output of a logic circuit is much greater than the power applied at the input. This is due to the amplifying properties of the transistor used as a switch. Thanks to this feature, the output of a given circuit can be connected to the inputs of several (e.g., 10–30) other circuits. This makes it possible, through various combinations, to realize any predefined function.<\/p>\n\n",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_7e8vqhi5",
+      "type": "content",
+      "title": "Slide 4",
+      "text": "<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>AND Logic Gate (AND)<\/b><\/p>\n\n<p>This circuit has one output and at least two inputs (in practice, up to 8 or more). It can be implemented using two or more transistors connected in series, operating in switching mode.<\/p>\n\n<p>The main property of the AND gate is that the output is at a high level only when <b>all inputs are high<\/b>, i.e., when all transistors are conducting. In all other cases, the output is low.<\/p>\n\n<div style=\"text-align:center; font-size:1.2em; margin:16px 0;\">\n  <b>Y = X₁ · X₂ · … · Xₙ<\/b>\n<\/div>\n\n<p>For example:<\/p>\n<ul>\n  <li><b>0 · 0 = 0<\/b><\/li>\n  <li><b>1 · 0 = 0<\/b><\/li>\n  <li><b>1 · 1 = 1<\/b><\/li>\n<\/ul>\n\n<p>This operation is also called a <b>logical product<\/b> or <b>coincidence<\/b>.<\/p>\n\n",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_ia7zb0o6",
+      "type": "content",
+      "title": "Slide 5",
+      "text": "<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>OR Logic Gate (OR)<\/b><\/p>\n\n<p>This circuit also has one output and at least two inputs. It can be implemented using transistors connected in parallel.<\/p>\n\n<p>The main property of the OR gate is that the output is high when <b>at least one input is high<\/b>. In other words, only one conducting transistor is enough to produce a high output.<\/p>\n\n<p>This operation is known as <b>logical sum<\/b>.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    }
+  ]
+};
+let state = { idx:0, quiz:{} };
+const $ = (sel) => document.querySelector(sel);
+function escapeHtml(str){ return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&#39;"); }
+function paragraphsFromText(text){ return String(text || "").split(/\n\s*\n/).map(s => s.trim()).filter(Boolean); }
+function renderContent(sl){ const rawText = String(sl.text || ""); const containsHtml = /<[^>]+>/.test(rawText); let pHtml = ""; if(containsHtml){ pHtml = rawText; } else { paragraphsFromText(rawText).forEach((p,i)=>{ const cls = i===0 ? (sl.useDropcap ? "lead dropcap" : "lead") : ""; pHtml += "<p class=\""+cls+"\">" + escapeHtml(p) + "</p>"; }); } if(!pHtml){ pHtml = "<p class=\"lead dropcap\">Add slide text in the editor.</p>"; } let ul = ""; if((sl.bullets||[]).length){ ul = "<ul>"; sl.bullets.forEach(b=> ul += "<li>"+escapeHtml(b)+"</li>"); ul += "</ul>"; } return "<div class=\"h1\">"+escapeHtml(sl.title)+"</div><div class=\"book\">"+pHtml+ul+"</div>"; }
+function renderQuiz(sl){ const prev = state.quiz[sl.id]; const chosen = prev && typeof prev.selectedIndex === "number" ? prev.selectedIndex : null; const answered = !!prev; let opts = ""; sl.options.forEach((txt,i)=>{ let cls = "qOpt"; if(answered){ if(i===sl.correctIndex) cls += " correct"; else if(i===chosen) cls += " wrong"; } opts += "<button class=\""+cls+"\" data-i=\""+i+"\" type=\"button\">"+escapeHtml(txt)+"</button>"; }); const fb = answered ? "<div class=\"qFeedback\">" + (prev.isCorrect ? "✅ Correct. " : "❌ Not quite. ") + escapeHtml(sl.explanation || "") + "</div>" : ""; return "<div class=\"quizBox\"><div class=\"qTitle\">"+escapeHtml(sl.title)+"</div><p class=\"qPrompt\">"+escapeHtml(sl.question||"")+"</p><div class=\"qOptions\">"+opts+"</div>"+fb+"</div>"; }
+function wireQuiz(sl){ document.querySelectorAll(".qOpt").forEach(btn => { btn.onclick = () => { const i = Number(btn.getAttribute("data-i")); state.quiz[sl.id] = { selectedIndex:i, isCorrect:i === sl.correctIndex }; render(); }; }); }
+function render(){ $("#courseTitle").textContent = lessonData.courseTitle; $("#courseSub").textContent = lessonData.courseSub; const goals = $("#goals"); goals.innerHTML = ""; (lessonData.learningOutcomes || []).forEach(g => { const li = document.createElement("li"); li.textContent = g; goals.appendChild(li); }); state.idx = Math.max(0, Math.min(state.idx, lessonData.slides.length - 1)); $("#slideCounter").textContent = (state.idx + 1) + " / " + lessonData.slides.length; $("#progressFill").style.width = (((state.idx + 1)/lessonData.slides.length) * 100) + "%"; const sl = lessonData.slides[state.idx]; $("#slide").innerHTML = sl.type === "quiz" ? renderQuiz(sl) : renderContent(sl); $("#statusLine").textContent = sl.type === "quiz" ? "Quick Check" : "Reading slide"; $("#btnPrev").disabled = state.idx === 0; $("#btnNext").disabled = state.idx === lessonData.slides.length - 1; if(sl.type === "quiz") wireQuiz(sl); }
+$("#btnPrev").onclick = () => { state.idx = Math.max(0, state.idx - 1); render(); };
+$("#btnNext").onclick = () => { state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); };
+document.addEventListener("keydown", (e) => { if(e.key === "ArrowLeft"){ state.idx = Math.max(0, state.idx - 1); render(); } else if(e.key === "ArrowRight"){ state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); } });
+render();
+</script>
+</body>
+</html>
