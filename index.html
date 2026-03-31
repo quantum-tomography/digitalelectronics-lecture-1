@@ -137,7 +137,81 @@ const lessonData = {
       "id": "s_8fl3d5va",
       "type": "content",
       "title": "Slide 10",
-      "text": "Write your content here.",
+      "text": "<p><b>Introduction to the Binary Number System<\/b><\/p>\n\n<p>Digital systems form the foundation of modern electronics, and their operation is based on the <b>binary number system<\/b>. Understanding this system is essential for working with digital circuits.<\/p>\n\n<p>In everyday life, we use the <b>decimal number system<\/b>, which consists of ten digits:<\/p>\n\n<p style=\"text-align:center;\"><b>0, 1, 2, 3, 4, 5, 6, 7, 8, 9<\/b><\/p>\n\n<p>This is a <b>positional system<\/b>, meaning that the value of each digit depends on its position within the number.<\/p>\n\n<p>For example, in the number <b>475<\/b>:<\/p>\n\n<p><b>5<\/b> represents units<\/p>\n<p><b>7<\/b> represents tens<\/p>\n<p><b>4<\/b> represents hundreds<\/p>\n\n<p>The positions are counted from right to left:<\/p>\n\n<p>units → tens → hundreds → thousands → …<\/p>\n\n<p>Each position is <b>10 times larger<\/b> than the previous one, which is why the system is called <b>decimal<\/b>.<\/p>\n\n<p>In contrast, the <b>binary system<\/b> uses only two digits:<\/p>\n\n<p style=\"text-align:center;\"><b>0 and 1<\/b><\/p>\n\n<p>This system is the basis of all digital technologies and electronic computation.<\/p>",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_01ejenjz",
+      "type": "content",
+      "title": "Slide 11",
+      "text": "<p><b>Flip-Flops (Triggers)<\/b><\/p>\n\n<p>A <b>flip-flop<\/b> is a digital device with <b>two stable states<\/b>. It can switch from one state to another under the influence of input signals.<\/p>\n\n<p>Typically, a flip-flop has:<\/p>\n\n<p><b>two outputs:<\/b> Q and Q̅ (always opposite)<\/p>\n\n<p>Flip-flops are widely used in:<\/p>\n\n<p>registers, counters, memory elements, and automation systems.<\/p>",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_le2buy3e",
+      "type": "content",
+      "title": "Slide 12",
+      "text": "<p><b>RS Flip-Flop<\/b><\/p>\n\n<p>The RS flip-flop has two inputs:<\/p>\n\n<p><b>S (Set)<\/b> – sets the output to 1<\/p>\n<p><b>R (Reset)<\/b> – sets the output to 0<\/p>\n\n<p>Main behavior:<\/p>\n\n<p><b>S = 1 → Q = 1<\/b><\/p>\n<p><b>R = 1 → Q = 0<\/b><\/p>\n\n<p>The outputs Q and Q̅ are always inverse of each other.<\/p>\n\n<p><b>RS Flip-Flop Special Case<\/b><\/p>\n\n<p>If both inputs are active at the same time:<\/p>\n\n<p><b>S = 1 and R = 1<\/b><\/p>\n\n<p>The output becomes <b>undefined<\/b>.<\/p>\n\n<p>This condition must be avoided in practical circuits.<\/p>\n\n<p><b>Asynchronous RS Flip-Flop<\/b><\/p>\n\n<p>This type changes state <b>immediately<\/b> when inputs change.<\/p>\n\n<p>It does not use a clock signal.<\/p>\n\n<p>Disadvantage:<\/p>\n\n<p>It is sensitive to noise — even small disturbances can change the state.<\/p>\n\n<p><b>Synchronous RS Flip-Flop<\/b><\/p>\n\n<p>This flip-flop includes a <b>clock input (C)<\/b>.<\/p>\n\n<p>The state changes only when the clock signal is active.<\/p>\n\n<p>This makes the operation <b>controlled and stable<\/b>.<\/p>\n\n<p>Synchronous flip-flops are widely used in digital systems.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_5q0i1q92",
+      "type": "content",
+      "title": "Slide 13",
+      "text": "<p><b>D Flip-Flop (Delay Flip-Flop)<\/b><\/p>\n\n<p>The D flip-flop has one main input:<\/p>\n\n<p><b>D (Data)<\/b><\/p>\n\n<p>On a clock signal:<\/p>\n\n<p><b>Q follows D<\/b><\/p>\n\n<p>This means the input value is stored at the output.<\/p>\n\n<p>Used in:<\/p>\n\n<p>memory elements and registers.<\/p>",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_yhyszjpp",
+      "type": "content",
+      "title": "Slide 14",
+      "text": "<p><b>JK Flip-Flop<\/b><\/p>\n\n<p>This is an improved version of the RS flip-flop.<\/p>\n\n<p>It removes the undefined state problem.<\/p>\n\n<p>Inputs:<\/p>\n\n<p><b>J and K<\/b><\/p>\n\n<p>Special behavior:<\/p>\n\n<p><b>J = 1 and K = 1 → output toggles<\/b><\/p>\n\n<p>This makes it very useful in sequential circuits.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_duz12frc",
+      "type": "content",
+      "title": "Slide 15",
+      "text": "<p><b>T Flip-Flop<\/b><\/p>\n\n<p>The T flip-flop toggles its state with each clock pulse.<\/p>\n\n<p>Behavior:<\/p>\n\n<p><b>T = 1 → output changes state<\/b><\/p>\n<p><b>T = 0 → output remains the same<\/b><\/p>\n\n<p>It is widely used in:<\/p>\n\n<p>counters and frequency division circuits.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_mou106x8",
+      "type": "content",
+      "title": "Slide 16",
+      "text": "<p><b>Schmitt Trigger<\/b><\/p>\n\n<p>This circuit has two stable states and responds to input signals with <b>threshold levels<\/b>.<\/p>\n\n<p>It introduces <b>hysteresis<\/b>, meaning:<\/p>\n\n<p>different switching levels for rising and falling signals.<\/p>\n\n<p>This helps eliminate noise and ensures stable switching.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_f4b0neje",
+      "type": "content",
+      "title": "Slide 17",
+      "text": "<p><b>Binary Counters<\/b><\/p>\n\n<p>Counters are built using flip-flops.<\/p>\n\n<p>Each flip-flop divides the frequency by 2.<\/p>\n\n<p>Example:<\/p>\n\n<p>1st flip-flop → ÷2<\/p>\n<p>2nd flip-flop → ÷4<\/p>\n<p>3rd flip-flop → ÷8<\/p>\n\n<p>This creates binary counting sequences.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_boshe4rb",
+      "type": "content",
+      "title": "Slide 18",
+      "text": "<p><b>Binary Representation<\/b><\/p>\n\n<p>Binary numbers use only two digits:<\/p>\n\n<p style=\"text-align:center;\"><b>0 and 1<\/b><\/p>\n\n<p>Each position represents a power of 2:<\/p>\n\n<p>1, 2, 4, 8, 16, 32, …<\/p>\n\n<p>This system is directly implemented using flip-flops.<\/p>",
       "bullets": [
         "Add a bullet point"
       ],
