@@ -216,6 +216,176 @@ const lessonData = {
         "Add a bullet point"
       ],
       "useDropcap": true
+    },
+    {
+      "id": "s_8wnojn85",
+      "type": "content",
+      "title": "Slide 19",
+      "text": "<p><b>Logical vs Arithmetic Values<\/b><\/p>\n\n<p>Logical values <b>0 and 1<\/b> are directly related to electrical levels:<\/p>\n\n<p><b>0 → low voltage (~0.1 V)<\/b><\/p>\n<p><b>1 → high voltage (~3–5 V)<\/b><\/p>\n\n<p>Logical operations do <b>not follow arithmetic rules<\/b>.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>1 + 1 = 1 (NOT 2)<\/b><\/p>\n\n<p>This is because logic works with states, not quantities.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_7znlwvdw",
+      "type": "content",
+      "title": "Slide 20",
+      "text": "<p><b>Binary Addition<\/b><\/p>\n\n<p>The behavior of binary addition is:<\/p>\n\n<p><b>0 + 0 = 0<\/b><\/p>\n<p><b>0 + 1 = 1<\/b><\/p>\n<p><b>1 + 0 = 1<\/b><\/p>\n<p><b>1 + 1 = 0 (with carry)<\/b><\/p>\n\n<p>This rule is fundamental for digital circuits.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_xut5sc24",
+      "type": "content",
+      "title": "Slide 21",
+      "text": "<p><b>Half Adder<\/b><\/p>\n\n<p>A half adder is a circuit that adds two binary digits.<\/p>\n\n<p>Inputs:<\/p>\n<p><b>X₁, X₂<\/b><\/p>\n\n<p>Outputs:<\/p>\n<p><b>Sum (S)<\/b> and <b>Carry (C)<\/b><\/p>\n\n<p>Behavior:<\/p>\n\n<p><b>S = X₁ ⊕ X₂<\/b><\/p>\n<p><b>C = X₁ · X₂<\/b><\/p>\n\n<p>It does not handle carry from previous stages.<\/p>\n\n",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_4z95wsm0",
+      "type": "content",
+      "title": "Slide 22",
+      "text": "<p><b>Full Adder<\/b><\/p>\n\n<p>A full adder adds three inputs:<\/p>\n\n<p><b>X₁, X₂, Carry-in (Cᵢ)<\/b><\/p>\n\n<p>Outputs:<\/p>\n\n<p><b>Sum (S)<\/b> and <b>Carry-out (Cₒ)<\/b><\/p>\n\n<p>This allows chaining multiple adders together.<\/p>\n\n<p>Used in real digital systems.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_3uds8cgn",
+      "type": "content",
+      "title": "Slide 23",
+      "text": "<p><b>Counters<\/b><\/p>\n\n<p>Counters are built from flip-flops.<\/p>\n\n<p>Each stage divides frequency:<\/p>\n\n<p>÷2 → ÷4 → ÷8 → …<\/p>\n\n<p>This produces binary counting sequences.<\/p>\n\n<p>Counters are used for:<\/p>\n\n<p>timing, frequency division, and digital measurement.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_2c0gzhrc",
+      "type": "content",
+      "title": "Slide 24",
+      "text": "<p><b>Up and Down Counters<\/b><\/p>\n\n<p>Counters can operate in two modes:<\/p>\n\n<p><b>Up counter → counts increasing values<\/b><\/p>\n<p><b>Down counter → counts decreasing values<\/b><\/p>\n\n<p>This depends on how flip-flops are connected.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_csjbatp1",
+      "type": "content",
+      "title": "Slide 25",
+      "text": "<p><b>Decade Counter (Modulo-10)<\/b><\/p>\n\n<p>This counter counts from <b>0 to 9<\/b> and then resets.<\/p>\n\n<p>Used in:<\/p>\n\n<p>digital clocks, displays, and measurement devices.<\/p>\n\n<p>Often implemented using T flip-flops.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_lspr3sff",
+      "type": "content",
+      "title": "Slide 26",
+      "text": "<p><b>Frequency Division<\/b><\/p>\n\n<p>Flip-flops can divide frequency:<\/p>\n\n<p><b>f_out = f_in / 2ⁿ<\/b><\/p>\n\n<p>Each stage halves the frequency.<\/p>\n\n<p>This is used in:<\/p>\n\n<p>timing circuits and clock generation.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_scpziw02",
+      "type": "content",
+      "title": "Slide 27",
+      "text": "<p><b>Registers<\/b><\/p>\n\n<p>Registers store binary information temporarily.<\/p>\n\n<p>They are built from flip-flops.<\/p>\n\n<p>Used for:<\/p>\n\n<p>data storage and transfer between stages.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_8tmthcpi",
+      "type": "content",
+      "title": "Slide 28",
+      "text": "<p><b>Shift Registers<\/b><\/p>\n\n<p>Shift registers move data left or right.<\/p>\n\n<p>Each clock pulse shifts the bits.<\/p>\n\n<p>Example:<\/p>\n\n<p>0110 → 1100 → 1000<\/p>\n\n<p>Used in:<\/p>\n\n<p>data transmission and processing.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_ks7y2i5t",
+      "type": "content",
+      "title": "Slide 29",
+      "text": "<p><b>Encoders<\/b><\/p>\n\n<p>An encoder converts input signals into a coded output.<\/p>\n\n<p>Example:<\/p>\n\n<p>decimal → binary<\/p>\n\n<p>Used in digital systems for data representation.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_gnkl4uvz",
+      "type": "content",
+      "title": "Slide 30",
+      "text": "<p><b>Decoders<\/b><\/p>\n\n<p>A decoder performs the opposite operation:<\/p>\n\n<p>binary → specific output line<\/p>\n\n<p>Used in:<\/p>\n\n<p>displays and selection circuits.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_hnrpe41l",
+      "type": "content",
+      "title": "Slide 31",
+      "text": "<p><b>Seven-Segment Display<\/b><\/p>\n\n<p>Used to display decimal digits (0–9).<\/p>\n\n<p>Each digit is formed by activating segments.<\/p>\n\n<p>Controlled by a decoder circuit.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_djo1cze7",
+      "type": "content",
+      "title": "Slide 32",
+      "text": "<p><b>Multiplexers<\/b><\/p>\n\n<p>A multiplexer selects one of many inputs.<\/p>\n\n<p>Output depends on control signals.<\/p>\n\n<p>Used to simplify circuit connections.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_ad6skis0",
+      "type": "content",
+      "title": "Slide 33",
+      "text": "<p><b>Demultiplexers<\/b><\/p>\n\n<p>A demultiplexer routes one input to multiple outputs.<\/p>\n\n<p>Controlled by selection lines.<\/p>\n\n<p>Used in data distribution.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_fe9zb0so",
+      "type": "content",
+      "title": "Slide 34",
+      "text": "<p><b>Comparators<\/b><\/p>\n\n<p>Comparators compare two binary values:<\/p>\n\n<p><b>A &lt; B<\/b><\/p>\n<p><b>A = B<\/b><\/p>\n<p><b>A &gt; B<\/b><\/p>\n\n<p>Used in decision-making circuits.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_xusv0obx",
+      "type": "content",
+      "title": "Slide 35",
+      "text": "<p><b>Full Adder (Detailed)<\/b><\/p>\n\n<p>A full adder is built from multiple logic elements and can process three inputs:<\/p>\n\n<p><b>X₁, X₂<\/b> – input bits<\/p>\n<p><b>Cᵢ<\/b> – carry from the previous stage<\/p>\n\n<p>Outputs:<\/p>\n\n<p><b>Y<\/b> – sum<\/p>\n<p><b>Cᵢ₊₁<\/b> – carry to the next stage<\/p>\n\n<p>The circuit combines several logic gates to produce both outputs simultaneously.<\/p>\n\n<p>In practice, full adders are combined to build multi-bit adders.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Practical Implementation<\/b><\/p>\n\n<p>Most commonly used are:<\/p>\n\n<p><b>2-bit, 4-bit, and 8-bit adders<\/b><\/p>\n\n<p>These are implemented as integrated circuits.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>7480<\/b> – 4-bit adder<\/p>\n<p><b>7483<\/b> – improved 4-bit adder<\/p>\n\n<p>They include multiple inputs and outputs for chaining operations.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Memory (Introduction)<\/b><\/p>\n\n<p>Memory is essential in digital systems for storing binary information.<\/p>\n\n<p>The storage is temporary and depends on the circuit design.<\/p>\n\n<p>Memory elements are typically built using:<\/p>\n\n<p><b>transistors and capacitors<\/b><\/p>\n\n<p>They are fundamental components in computers and digital devices.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
     }
   ]
 };
