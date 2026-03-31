@@ -76,6 +76,34 @@ const lessonData = {
       "text": "The <b>NOT logic gate<\/b> has one input and one output. It can be implemented most simply by using an inverter built with a bipolar transistor. It can also be realized with a MOS transistor.\n\nThe main property of the NOT gate is that the output level is always the opposite of the input level. For this reason, the gate performs the logical operation called <b>negation<\/b> or <b>inversion<\/b>.\n\nUsually, the input signal is denoted by <b>X<\/b>, and the output signal by <b>Y<\/b>. Logical negation is written by placing a bar over the argument:\n\n<div style=\"text-align:center; font-size:1.2em; margin:16px 0;\"><b>Y = X̅<\/b><\/div>\n\nThis is read as: <i>“Y is NOT X.”<\/i>\n\nIn practice, this means:\n<ul>\n  <li>if the input is <b>1<\/b>, the output is <b>0<\/b>;<\/li>\n  <li>if the input is <b>0<\/b>, the output is <b>1<\/b>.<\/li>\n<\/ul>\n\nThe relationship between the input and output can be shown with a <b>truth table<\/b>. For the NOT gate, there are only two possible cases:\n<ul>\n  <li><b>X = 0 → Y = 1<\/b><\/li>\n  <li><b>X = 1 → Y = 0<\/b><\/li>\n<\/ul>\n\nThe bar over a value means that the logical level is inverted. For example:\n<ul>\n  <li><b><span style=\"position:relative; display:inline-block;\">1<span style=\"position:absolute; left:0; right:0; top:-0.2em; text-align:center;\">‾<\/span><\/span> = 0<\/b><\/li>\n  <li><b><span style=\"position:relative; display:inline-block;\">0<span style=\"position:absolute; left:0; right:0; top:-0.2em; text-align:center;\">‾<\/span><\/span> = 1<\/b><\/li>\n<\/ul>\n\n\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/2.png\" target=\"_blank\">\n    <img src=\"images/2.png\" alt=\"NOT gate symbol\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">NOT gate symbol (click to enlarge)<\/div>\n<\/div>\n\n\nIn block diagrams, the NOT gate is usually shown as a symbol with a small circle at the output. This small circle indicates inversion. The input and output voltages are measured with respect to the reference conductor, or ground.",
       "bullets": [],
       "useDropcap": true
+    },
+    {
+      "id": "s_isu1kuf6",
+      "type": "content",
+      "title": "Slide 3",
+      "text": "<p>The ground conductor (as well as the power supply) is often not shown, but is implied. This is an important feature when drawing logic circuits and must be remembered.<\/p>\n\n<p>As an example, Fig. 7.16a, b shows how the <b>NOT logic gate<\/b> inverts (reverses) the electrical levels.<\/p>\n\n\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/2_1.png\" target=\"_blank\">\n    <img src=\"images/2_1.png\" alt=\"Using a NOT gate\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">Using a NOT gate (click to enlarge)<\/div>\n<\/div>\n\n\n\n<p>In Fig. 7.16c, the connection of two NOT gates is shown, where from a single input signal <b>X<\/b>, two output signals are obtained: <b>Y₁<\/b> and <b>Y₂<\/b>.<\/p>\n\n<p>We recall that the electrical power obtained at the output of a logic circuit is much greater than the power applied at the input. This is due to the amplifying properties of the transistor used as a switch. Thanks to this feature, the output of a given circuit can be connected to the inputs of several (e.g., 10–30) other circuits. This makes it possible, through various combinations, to realize any predefined function.<\/p>\n\n",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_7e8vqhi5",
+      "type": "content",
+      "title": "Slide 4",
+      "text": "<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>AND Logic Gate (AND)<\/b><\/p>\n\n<p>This circuit has one output and at least two inputs (in practice, up to 8 or more). It can be implemented using two or more transistors connected in series, operating in switching mode.<\/p>\n\n<p>The main property of the AND gate is that the output is at a high level only when <b>all inputs are high<\/b>, i.e., when all transistors are conducting. In all other cases, the output is low.<\/p>\n\n<div style=\"text-align:center; font-size:1.2em; margin:16px 0;\">\n  <b>Y = X₁ · X₂ · … · Xₙ<\/b>\n<\/div>\n\n<p>For example:<\/p>\n<ul>\n  <li><b>0 · 0 = 0<\/b><\/li>\n  <li><b>1 · 0 = 0<\/b><\/li>\n  <li><b>1 · 1 = 1<\/b><\/li>\n<\/ul>\n\n<p>This operation is also called a <b>logical product<\/b> or <b>coincidence<\/b>.<\/p>\n\n",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
+    },
+    {
+      "id": "s_ia7zb0o6",
+      "type": "content",
+      "title": "Slide 5",
+      "text": "<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>OR Logic Gate (OR)<\/b><\/p>\n\n<p>This circuit also has one output and at least two inputs. It can be implemented using transistors connected in parallel.<\/p>\n\n<p>The main property of the OR gate is that the output is high when <b>at least one input is high<\/b>. In other words, only one conducting transistor is enough to produce a high output.<\/p>\n\n<p>This operation is known as <b>logical sum<\/b>.<\/p>",
+      "bullets": [
+        "Add a bullet point"
+      ],
+      "useDropcap": true
     }
   ]
 };
