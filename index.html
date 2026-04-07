@@ -1,56 +1,85 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Digital Electronics Basics</title>
-<style>
-:root { --bg:#0b1220; --card:#111a2e; --text:#e7eefc; --muted:#a8b3cf; --accent:#4da3ff; --good:#3ddc97; --bad:#ff5c7a; }
-*{ box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-body{ margin:0; background:linear-gradient(160deg,#081022,#0b1220); color:var(--text); }
-header{ position:sticky; top:0; backdrop-filter: blur(10px); background:rgba(11,18,32,.7); border-bottom:1px solid rgba(255,255,255,.08); z-index:10; }
-.wrap{ max-width:1000px; margin:0 auto; padding:18px; }
-.row{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-.title{ font-weight:700; letter-spacing:.2px; }
-.sub{ color:var(--muted); font-size:14px; }
-.bar{ height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
-.bar > div{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),#7cc6ff); transition:width .25s ease; }
-main{ padding:20px 0 60px; }
-.card{ background:rgba(17,26,46,.85); border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
-.cardPad{ padding:18px; }
-.grid{ display:grid; grid-template-columns:1fr; gap:14px; }
-@media(min-width:900px){ .grid{ grid-template-columns: 2fr 1fr; } }
-.h1{ font-size:26px; margin:0 0 10px; display:inline-block; position:relative; }
-.h1::after{ content:""; display:block; width:58%; height:3px; margin-top:8px; border-radius:999px; background:linear-gradient(90deg, rgba(77,163,255,.95), rgba(124,198,255,.15)); }
-.h2{ font-size:18px; margin:18px 0 10px; color:#d8e6ff; }
-ul{ margin:10px 0 0 18px; color:var(--text); }
-li{ margin:6px 0; }
-.pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(77,163,255,.12); border:1px solid rgba(77,163,255,.35); color:#cfe7ff; font-size:12px; }
-.btns{ display:flex; gap:10px; flex-wrap:wrap; }
-button{ border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; }
-button:hover{ background:rgba(255,255,255,.10); }
-button.primary{ background:rgba(77,163,255,.20); border-color:rgba(77,163,255,.55); }
-.footerNav{ position:fixed; bottom:0; left:0; right:0; background:rgba(11,18,32,.75); border-top:1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); }
-.footerNav .wrap{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
-.book{ max-width:70ch; margin:0; }
-.book p{ color:var(--text); line-height:1.85; margin:10px 0; font-size:16px; }
-.book p.lead{ color:#d8e6ff; font-size:16px; }
-.book .dropcap:first-letter{ float:left; font-size:42px; line-height:38px; padding:6px 8px 0 0; color:#d8e6ff; font-weight:800; }
-.quizBox{ margin-top:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03); border-radius:16px; padding:14px; }
-.qTitle{ font-weight:800; color:#d8e6ff; margin:0 0 8px; }
-.qPrompt{ margin:0 0 12px; line-height:1.75; color:var(--text); }
-.qOptions{ display:grid; gap:10px; }
-.qOpt{ text-align:left; border-radius:14px; padding:12px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); }
-.qOpt:hover{ background:rgba(255,255,255,.08); }
-.qOpt.correct{ border-color:rgba(61,220,151,.55); background:rgba(61,220,151,.12); }
-.qOpt.wrong{ border-color:rgba(255,92,122,.55); background:rgba(255,92,122,.12); }
-.qFeedback{ margin-top:12px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); color:var(--text); line-height:1.6; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Electronics Basics</title>
+  <style>
+    :root { --bg:#0b1220; --card:#111a2e; --text:#e7eefc; --muted:#a8b3cf; --accent:#4da3ff; --good:#3ddc97; --bad:#ff5c7a; }
+    *{ box-sizing:border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body{ margin:0; background:linear-gradient(160deg,#081022,#0b1220); color:var(--text); }
+    header{ position:sticky; top:0; backdrop-filter: blur(10px); background:rgba(11,18,32,.7); border-bottom:1px solid rgba(255,255,255,.08); z-index:10; }
+    .wrap{ max-width:1000px; margin:0 auto; padding:18px; }
+    .row{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .title{ font-weight:700; letter-spacing:.2px; }
+    .sub{ color:var(--muted); font-size:14px; }
+    .bar{ height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
+    .bar > div{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),#7cc6ff); transition:width .25s ease; }
+    main{ padding:20px 0 60px; }
+    .card{ background:rgba(17,26,46,.85); border:1px solid rgba(255,255,255,.08); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+    .cardPad{ padding:18px; }
+    .grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+    @media(min-width:900px){ .grid{ grid-template-columns: 2fr 1fr; } }
+    .h1{ font-size:26px; margin:0 0 10px; display:inline-block; position:relative; }
+    .h1::after{ content:""; display:block; width:58%; height:3px; margin-top:8px; border-radius:999px; background:linear-gradient(90deg, rgba(77,163,255,.95), rgba(124,198,255,.15)); }
+    .h2{ font-size:18px; margin:18px 0 10px; color:#d8e6ff; }
+    ul{ margin:10px 0 0 18px; color:var(--text); }
+    li{ margin:6px 0; }
+    .pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(77,163,255,.12); border:1px solid rgba(77,163,255,.35); color:#cfe7ff; font-size:12px; }
+    .btns{ display:flex; gap:10px; flex-wrap:wrap; }
+    button{ border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.06); color:var(--text); padding:10px 14px; border-radius:12px; cursor:pointer; }
+    button:hover{ background:rgba(255,255,255,.10); }
+    button.primary{ background:rgba(77,163,255,.20); border-color:rgba(77,163,255,.55); }
+    .footerNav{ position:fixed; bottom:0; left:0; right:0; background:rgba(11,18,32,.75); border-top:1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); }
+    .footerNav .wrap{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .book{ max-width:70ch; margin:0; }
+    .book p{ color:var(--text); line-height:1.85; margin:10px 0; font-size:16px; }
+    .book p.lead{ color:#d8e6ff; font-size:16px; }
+    .book .dropcap:first-letter{ float:left; font-size:42px; line-height:38px; padding:6px 8px 0 0; color:#d8e6ff; font-weight:800; }
+    .quizBox{ margin-top:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03); border-radius:16px; padding:14px; }
+    .qTitle{ font-weight:800; color:#d8e6ff; margin:0 0 8px; }
+    .qPrompt{ margin:0 0 12px; line-height:1.75; color:var(--text); }
+    .qOptions{ display:grid; gap:10px; }
+    .qOpt{ text-align:left; border-radius:14px; padding:12px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); }
+    .qOpt:hover{ background:rgba(255,255,255,.08); }
+    .qOpt.correct{ border-color:rgba(61,220,151,.55); background:rgba(61,220,151,.12); }
+    .qOpt.wrong{ border-color:rgba(255,92,122,.55); background:rgba(255,92,122,.12); }
+    .qFeedback{ margin-top:12px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); color:var(--text); line-height:1.6; }
+  </style>
 </head>
 <body>
-<header><div class="wrap"><div class="row"><div><div class="title" id="courseTitle"></div><div class="sub" id="courseSub"></div></div><div class="pill"><span id="slideCounter"></span></div></div><div style="margin-top:12px" class="bar"><div id="progressFill"></div></div></div></header>
-<main><div class="wrap"><div class="grid"><section class="card cardPad" id="slide"></section><aside class="card cardPad"><div class="h2">Learning outcomes</div><ul id="goals"></ul></aside></div></div></main>
-<div class="footerNav"><div class="wrap"><div class="btns"><button id="btnPrev">← Prev</button><button id="btnNext" class="primary">Next →</button></div><div class="sub" id="statusLine"></div></div></div>
+<header>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <div class="title" id="courseTitle"></div>
+        <div class="sub" id="courseSub"></div>
+      </div>
+      <div class="pill"><span id="slideCounter"></span></div>
+    </div>
+    <div style="margin-top:12px" class="bar"><div id="progressFill"></div></div>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="grid">
+      <section class="card cardPad" id="slide"></section>
+      <aside class="card cardPad">
+        <div class="h2">Learning outcomes</div>
+        <ul id="goals"></ul>
+      </aside>
+    </div>
+  </div>
+</main>
+<div class="footerNav">
+  <div class="wrap">
+    <div class="btns">
+      <button id="btnPrev">← Prev</button>
+      <button id="btnNext" class="primary">Next →</button>
+    </div>
+    <div class="sub" id="statusLine"></div>
+  </div>
+</div>
 <script>
 const lessonData = {
   "courseTitle": "Digital Electronics Basics",
@@ -201,10 +230,8 @@ const lessonData = {
       "id": "s_f4b0neje",
       "type": "content",
       "title": "Slide 17",
-      "text": "<p><b>Binary Counters<\/b><\/p>\n\n<p>Counters are built using flip-flops.<\/p>\n\n<p>Each flip-flop divides the frequency by 2.<\/p>\n\n<p>Example:<\/p>\n\n<p>1st flip-flop → ÷2<\/p>\n<p>2nd flip-flop → ÷4<\/p>\n<p>3rd flip-flop → ÷8<\/p>\n\n<p>This creates binary counting sequences.<\/p>",
-      "bullets": [
-        "Add a bullet point"
-      ],
+      "text": "<p><b>Counters and Frequency Dividers<\/b><\/p>\n\n<p>Counters are digital circuits built from <b>flip-flops<\/b>. They are used to count pulses and generate binary sequences.<\/p>\n\n<p>In digital systems, counting is performed using the <b>binary number system<\/b>, where only two states exist: <b>0 and 1<\/b>.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Asynchronous (Ripple) Counter<\/b><\/p>\n\n<p>The simplest counter is built using <b>T flip-flops<\/b> connected in series.<\/p>\n\n<p>Each flip-flop divides the input frequency:<\/p>\n\n<p><b>1st stage → ÷2<\/b><\/p>\n<p><b>2nd stage → ÷4<\/b><\/p>\n<p><b>3rd stage → ÷8<\/b><\/p>\n<p><b>4th stage → ÷16<\/b><\/p>\n\n<p>The outputs represent binary values:<\/p>\n\n<p><b>Q₁, Q₂, Q₃, Q₄<\/b><\/p>\n\n<p>The counter has a total of <b>16 states (0 to 15)<\/b>.<\/p>\n\n<p>This type is called <b>asynchronous<\/b> because each stage is triggered by the previous one (no global clock).<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Synchronous Counter<\/b><\/p>\n\n<p>In a synchronous counter, all flip-flops are controlled by a <b>common clock signal (C)<\/b>.<\/p>\n\n<p>This ensures that all stages change state <b>simultaneously<\/b>.<\/p>\n\n<p>Advantages over asynchronous counters:<\/p>\n\n<p>✔ faster operation<\/p>\n<p>✔ no propagation delay between stages<\/p>\n\n<p>Synchronous counters are widely used in modern digital systems.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Counting Behavior<\/b><\/p>\n\n<p>The counter increases its value with each input pulse.<\/p>\n\n<p>Example sequence:<\/p>\n\n<p>0000 → 0001 → 0010 → 0011 → … → 1111<\/p>\n\n<p>After reaching the maximum value, it resets and starts again.<\/p>\n\n<p>This behavior is essential for timing and digital control systems.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n\n<p><b>Key Characteristics<\/b><\/p>\n\n<p>The total number of states depends on the number of flip-flops:<\/p>\n\n<p><b>Number of states = 2ⁿ<\/b><\/p>\n\n<p>Example:<\/p>\n\n<p><b>n = 4 → 2⁴ = 16 states<\/b><\/p>\n\n<p>Counters are fundamental components in:<\/p>\n\n<p>timers, clocks, frequency dividers, and digital measurement systems.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Types of Counters<\/b><\/p>\n\n<p>Counters can operate in different modes:<\/p>\n\n<p><b>Up counters<\/b> – increase the stored value with each pulse<\/p>\n<p><b>Down counters<\/b> – decrease the stored value with each pulse<\/p>\n\n<p>In up counters, the sequence grows:<\/p>\n\n<p>0000 → 0001 → 0010 → …<\/p>\n\n<p>In down counters, the sequence decreases:<\/p>\n\n<p>1111 → 1110 → 1101 → …<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Reversible Counters<\/b><\/p>\n\n<p>Some counters can operate in both directions.<\/p>\n\n<p>These are called <b>reversible counters<\/b>.<\/p>\n\n<p>A control input determines whether the counter:<\/p>\n\n<p>✔ counts up<\/p>\n<p>✔ or counts down<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Decimal (BCD) Counters<\/b><\/p>\n\n<p>Decimal counters count from <b>0 to 9<\/b>.<\/p>\n\n<p>The output is represented in <b>binary-coded decimal (BCD)<\/b>.<\/p>\n\n<p>Each decimal digit is encoded using 4 bits.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>Decimal 9 → Binary 1001<\/b><\/p>\n\n<p>This coding is known as <b>8-4-2-1 code<\/b>.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Modulo Counters<\/b><\/p>\n\n<p>Counters are often designed to count up to a specific value.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>Modulo-10 counter → counts 0 to 9<\/b><\/p>\n\n<p>After reaching the maximum value, the counter resets.<\/p>\n\n<p>This is widely used in digital displays and timing systems.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Frequency Dividers<\/b><\/p>\n\n<p>Counters can be used as <b>frequency dividers<\/b>.<\/p>\n\n<p>The relationship is:<\/p>\n\n<p><b>f_out = f_in / N<\/b><\/p>\n\n<p>where <b>N<\/b> is the division factor.<\/p>\n\n<p>Examples:<\/p>\n\n<p>Divide by 2, 4, 8, 10, etc.<\/p>\n\n<p>These circuits are essential in clock generation and timing systems.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Practical Example<\/b><\/p>\n\n<p>A decimal counter can be built using flip-flops and additional logic.<\/p>\n\n<p>When the count reaches 10, the circuit generates a reset signal.<\/p>\n\n<p>This ensures counting stays within the desired range.<\/p>\n\n<p>Such circuits are used in:<\/p>\n\n<p>digital clocks, counters, and measurement devices.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Cascaded Frequency Dividers<\/b><\/p>\n\n<p>When multiple dividers are connected in series, the total division factor is the <b>product<\/b> of individual factors.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>N₁ = 3 and N₂ = 5 → N = 3 × 5 = 15<\/b><\/p>\n\n<p>This allows flexible design of frequency division circuits.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Programmable Frequency Dividers<\/b><\/p>\n\n<p>Some dividers allow setting the division factor externally.<\/p>\n\n<p>This is done using a <b>binary (BCD) input<\/b>.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>IC 74161<\/b> – programmable counter/divider<\/p>\n\n<p>Division factor can be selected in a range (e.g., 1 to 16).<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Registers<\/b><\/p>\n\n<p>Registers are circuits used for <b>temporary storage<\/b> of binary data.<\/p>\n\n<p>They store information as a group of bits.<\/p>\n\n<p>Built using <b>flip-flops<\/b>.<\/p>\n\n<p>Widely used in digital systems and processors.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Register Operations<\/b><\/p>\n\n<p><b>Write:<\/b> storing data into the register<\/p>\n\n<p><b>Read:<\/b> retrieving stored data<\/p>\n\n<p>After reading, the register is ready for new data.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Shift Registers<\/b><\/p>\n\n<p>Shift registers move stored data step by step.<\/p>\n\n<p>Each clock pulse shifts the bits:<\/p>\n\n<p>→ to the right<\/p>\n<p>← to the left<\/p>\n\n<p>This is essential for data transfer and processing.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Example of Shifting<\/b><\/p>\n\n<p>Binary number:<\/p>\n\n<p><b>0110 → 1100 → 1000<\/b><\/p>\n\n<p>Shifting left corresponds to multiplication by 2.<\/p>\n\n<p>Shifting right corresponds to division by 2.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Applications of Shift Registers<\/b><\/p>\n\n<p>Shift registers are widely used in computers and digital systems.<\/p>\n\n<p>They allow data to be:<\/p>\n\n<p>✔ entered from keyboards<\/p>\n<p>✔ processed internally<\/p>\n<p>✔ displayed on screens or sent to output devices<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Integrated Shift Registers<\/b><\/p>\n\n<p>Example:<\/p>\n\n<p><b>IC 74194<\/b> – universal shift register<\/p>\n\n<p>Features:<\/p>\n\n<p>✔ parallel inputs and outputs<\/p>\n<p>✔ serial shifting<\/p>\n<p>✔ multiple control inputs<\/p>\n\n<p>Maximum operating frequency can reach tens of MHz.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Ring Counters<\/b><\/p>\n\n<p>A ring counter is a special type of counter built from flip-flops.<\/p>\n\n<p>Only one flip-flop is set to <b>1<\/b>, the others are <b>0<\/b>.<\/p>\n\n<p>With each clock pulse, the “1” shifts to the next position.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Properties<\/b><\/p>\n\n<p>The number of states equals the number of flip-flops.<\/p>\n\n<p>Example:<\/p>\n\n<p><b>4 flip-flops → 4 states<\/b><\/p>\n\n<p>Used in timing and sequence generation.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Johnson Counter<\/b><\/p>\n\n<p>A Johnson counter is a modified ring counter.<\/p>\n\n<p>The inverted output of the last flip-flop is fed back to the input.<\/p>\n\n<p>This creates a longer counting sequence.<\/p>\n<p><b>Johnson Counter<\/b><\/p>\n\n<p>A Johnson counter is a modified ring counter.<\/p>\n\n<p>The inverted output of the last flip-flop is fed back to the input.<\/p>\n\n<p>This creates a longer counting sequence.<\/p>\n\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Operation of Johnson Counter<\/b><\/p>\n\n<p>Example sequence:<\/p>\n\n<p><b>0000 → 1000 → 1100 → 1110 → 1111 → 0111 → 0011 → 0001 → 0000<\/b><\/p>\n\n<p>This produces <b>2n states<\/b> for n flip-flops.<\/p>\n\n<hr style=\"margin:20px 0; opacity:0.3;\">\n<p><b>Key Advantage<\/b><\/p>\n\n<p>Johnson counters generate more states than ring counters.<\/p>\n\n<p>For n flip-flops:<\/p>\n\n<p><b>Number of states = 2n<\/b><\/p>\n\n<p>This makes them efficient for sequence generation.<\/p>\n\n",
+      "bullets": [],
       "useDropcap": true
     },
     {
@@ -386,20 +413,79 @@ const lessonData = {
         "Add a bullet point"
       ],
       "useDropcap": true
+    },
+    {
+      "id": "s_vvxhgvch",
+      "type": "content",
+      "title": "Slide 36",
+      "text": "<p><b>Important Laws<\/b><\/p>\n\n<p><b>Commutative Law:<\/b><\/p>\n<p>X₁·X₂ = X₂·X₁<\/p>\n<p>X₁ + X₂ = X₂ + X₁<\/p>\n\n<p><b>Distributive Law:<\/b><\/p>\n<p>X₁·(X₂ + X₃) = X₁·X₂ + X₁·X₃<\/p>\n\n<p><b>Absorption Law:<\/b><\/p>\n<p>X₁ · X₂ + X₁· <span style=\"text-decoration: overline;\">X₂<\/span> = X₁<\/p>\n\n<p><b>De Morgan’s Theorem<\/b><\/p>\n\n<p><span style=\"text-decoration: overline;\">X₁ + X₂ + X₃<\/span> = <span style=\"text-decoration: overline;\">X₁<\/span>·<span style=\"text-decoration: overline;\">X₂<\/span>·<span style=\"text-decoration: overline;\">X₃<\/span><\/p>\n\n<p><span style=\"text-decoration: overline;\">X₁·X₂·X₃<\/span> = <span style=\"text-decoration: overline;\">X₁<\/span> + <span style=\"text-decoration: overline;\">X₂<\/span> + <span style=\"text-decoration: overline;\">X₃<\/span><\/p>\n\n<p>These laws are essential for simplifying logic circuits.<\/p>\n\n<p>The same logical result can be obtained using different circuit designs.<\/p>\n\n<p>This leads to the concept of:<\/p>\n\n<p><b>logic minimization<\/b><\/p>\n\n<p>Goal:<\/p>\n\n<p>✔ reduce number of gates<\/p>\n<p>✔ improve efficiency<\/p>\n\n<div style=\"text-align:center;margin:20px 0;\">\n  <a href=\"images/De_Morgan.png\" target=\"_blank\">\n    <img src=\"images/De_Morgan.png\" alt=\"Venn Diagram of DeMorgan law\" style=\"max-width:600px;width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);cursor:pointer;\">\n  <\/a>\n  <div style=\"font-size:0.9em;color:#a8b3cf;margin-top:6px;\">Venn Diagram of DeMorgan law (click to enlarge)<\/div>\n<\/div>",
+      "bullets": [],
+      "useDropcap": true
+    },
+    {
+      "id": "s_yeg4nrrk",
+      "type": "content",
+      "title": "Slide 37",
+      "text": "Write your content here.",
+      "bullets": [],
+      "useDropcap": true
     }
   ]
 };
 let state = { idx:0, quiz:{} };
 const $ = (sel) => document.querySelector(sel);
-function escapeHtml(str){ return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&#39;"); }
-function paragraphsFromText(text){ return String(text || "").split(/\n\s*\n/).map(s => s.trim()).filter(Boolean); }
-function renderContent(sl){ const rawText = String(sl.text || ""); const containsHtml = /<[^>]+>/.test(rawText); let pHtml = ""; if(containsHtml){ pHtml = rawText; } else { paragraphsFromText(rawText).forEach((p,i)=>{ const cls = i===0 ? (sl.useDropcap ? "lead dropcap" : "lead") : ""; pHtml += "<p class=\""+cls+"\">" + escapeHtml(p) + "</p>"; }); } if(!pHtml){ pHtml = "<p class=\"lead dropcap\">Add slide text in the editor.</p>"; } let ul = ""; if((sl.bullets||[]).length){ ul = "<ul>"; sl.bullets.forEach(b=> ul += "<li>"+escapeHtml(b)+"</li>"); ul += "</ul>"; } return "<div class=\"h1\">"+escapeHtml(sl.title)+"</div><div class=\"book\">"+pHtml+ul+"</div>"; }
-function renderQuiz(sl){ const prev = state.quiz[sl.id]; const chosen = prev && typeof prev.selectedIndex === "number" ? prev.selectedIndex : null; const answered = !!prev; let opts = ""; sl.options.forEach((txt,i)=>{ let cls = "qOpt"; if(answered){ if(i===sl.correctIndex) cls += " correct"; else if(i===chosen) cls += " wrong"; } opts += "<button class=\""+cls+"\" data-i=\""+i+"\" type=\"button\">"+escapeHtml(txt)+"</button>"; }); const fb = answered ? "<div class=\"qFeedback\">" + (prev.isCorrect ? "✅ Correct. " : "❌ Not quite. ") + escapeHtml(sl.explanation || "") + "</div>" : ""; return "<div class=\"quizBox\"><div class=\"qTitle\">"+escapeHtml(sl.title)+"</div><p class=\"qPrompt\">"+escapeHtml(sl.question||"")+"</p><div class=\"qOptions\">"+opts+"</div>"+fb+"</div>"; }
-function wireQuiz(sl){ document.querySelectorAll(".qOpt").forEach(btn => { btn.onclick = () => { const i = Number(btn.getAttribute("data-i")); state.quiz[sl.id] = { selectedIndex:i, isCorrect:i === sl.correctIndex }; render(); }; }); }
-function render(){ $("#courseTitle").textContent = lessonData.courseTitle; $("#courseSub").textContent = lessonData.courseSub; const goals = $("#goals"); goals.innerHTML = ""; (lessonData.learningOutcomes || []).forEach(g => { const li = document.createElement("li"); li.textContent = g; goals.appendChild(li); }); state.idx = Math.max(0, Math.min(state.idx, lessonData.slides.length - 1)); $("#slideCounter").textContent = (state.idx + 1) + " / " + lessonData.slides.length; $("#progressFill").style.width = (((state.idx + 1)/lessonData.slides.length) * 100) + "%"; const sl = lessonData.slides[state.idx]; $("#slide").innerHTML = sl.type === "quiz" ? renderQuiz(sl) : renderContent(sl); $("#statusLine").textContent = sl.type === "quiz" ? "Quick Check" : "Reading slide"; $("#btnPrev").disabled = state.idx === 0; $("#btnNext").disabled = state.idx === lessonData.slides.length - 1; if(sl.type === "quiz") wireQuiz(sl); }
-$("#btnPrev").onclick = () => { state.idx = Math.max(0, state.idx - 1); render(); };
-$("#btnNext").onclick = () => { state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); };
-document.addEventListener("keydown", (e) => { if(e.key === "ArrowLeft"){ state.idx = Math.max(0, state.idx - 1); render(); } else if(e.key === "ArrowRight"){ state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); } });
+function escapeHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function paragraphsFromText(text){ return String(text || '').split(/
+s*
+/).map(s => s.trim()).filter(Boolean); }
+function renderContent(sl){
+  const rawText = String(sl.text || '');
+  const containsHtml = /<[^>]+>/.test(rawText);
+  let bodyHtml = '';
+  if(containsHtml){ bodyHtml = rawText; }
+  else {
+    paragraphsFromText(rawText).forEach((p,i) => {
+      const cls = i===0 ? (sl.useDropcap ? 'lead dropcap' : 'lead') : '';
+      bodyHtml += '<p class="' + cls + '">' + escapeHtml(p) + '</p>';
+    });
+    if(!bodyHtml) bodyHtml = '<p class="lead dropcap">Add slide text in the editor.</p>';
+  }
+  let ul = '';
+  if((sl.bullets||[]).length){ ul = '<ul>'; sl.bullets.forEach(b => ul += '<li>' + escapeHtml(b) + '</li>'); ul += '</ul>'; }
+  return '<div class="h1">' + escapeHtml(sl.title) + '</div><div class="book">' + bodyHtml + ul + '</div>';
+}
+function renderQuiz(sl){
+  const prev = state.quiz[sl.id];
+  const chosen = prev && typeof prev.selectedIndex === 'number' ? prev.selectedIndex : null;
+  const answered = !!prev;
+  let opts = '';
+  sl.options.forEach((txt,i)=>{
+    let cls = 'qOpt';
+    if(answered){ if(i===sl.correctIndex) cls += ' correct'; else if(i===chosen) cls += ' wrong'; }
+    opts += '<button class="' + cls + '" data-i="' + i + '" type="button">' + escapeHtml(txt) + '</button>';
+  });
+  const fb = answered ? '<div class="qFeedback">' + (prev.isCorrect ? '✅ Correct. ' : '❌ Not quite. ') + escapeHtml(sl.explanation || '') + '</div>' : '';
+  return '<div class="quizBox"><div class="qTitle">' + escapeHtml(sl.title) + '</div><p class="qPrompt">' + escapeHtml(sl.question || '') + '</p><div class="qOptions">' + opts + '</div>' + fb + '</div>';
+}
+function wireQuiz(sl){ document.querySelectorAll('.qOpt').forEach(btn => { btn.onclick = () => { const i = Number(btn.getAttribute('data-i')); state.quiz[sl.id] = { selectedIndex:i, isCorrect:i===sl.correctIndex }; render(); }; }); }
+function render(){
+  $('#courseTitle').textContent = lessonData.courseTitle || '';
+  $('#courseSub').textContent = lessonData.courseSub || '';
+  const goals = $('#goals'); goals.innerHTML = '';
+  (lessonData.learningOutcomes || []).forEach(g => { const li = document.createElement('li'); li.textContent = g; goals.appendChild(li); });
+  state.idx = Math.max(0, Math.min(state.idx, lessonData.slides.length - 1));
+  $('#slideCounter').textContent = (state.idx + 1) + ' / ' + lessonData.slides.length;
+  $('#progressFill').style.width = (((state.idx + 1) / lessonData.slides.length) * 100) + '%';
+  const sl = lessonData.slides[state.idx];
+  $('#slide').innerHTML = sl.type === 'quiz' ? renderQuiz(sl) : renderContent(sl);
+  $('#statusLine').textContent = sl.type === 'quiz' ? 'Quick Check' : 'Reading slide';
+  $('#btnPrev').disabled = state.idx === 0;
+  $('#btnNext').disabled = state.idx === lessonData.slides.length - 1;
+  if(sl.type === 'quiz') wireQuiz(sl);
+}
+$('#btnPrev').onclick = () => { state.idx = Math.max(0, state.idx - 1); render(); };
+$('#btnNext').onclick = () => { state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); };
+document.addEventListener('keydown', (e) => { if(e.key === 'ArrowLeft'){ state.idx = Math.max(0, state.idx - 1); render(); } else if(e.key === 'ArrowRight'){ state.idx = Math.min(lessonData.slides.length - 1, state.idx + 1); render(); } });
 render();
 </script>
 </body>
